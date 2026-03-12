@@ -1,11 +1,27 @@
 package algods.lecture.vl_2026_03_12.Lists;
 
-public class LinkedList {
+public class LinkedList implements List {
     Element anchor;
     int size;
 
     public LinkedList() {
         this.anchor = new Element();
+    }
+
+    /// Liefert das Element an Stelle pos.
+    public Element get(int pos) {
+        if (pos > this.size() || pos < 0) {
+            return null;
+        }
+
+        Element current = this.anchor.next;
+
+        while (pos > 0) {
+            current = current.next;
+            pos--;
+        }
+
+        return current;
     }
 
     /// Hängt einen neuen Wert am Ende der Liste an.
@@ -17,32 +33,18 @@ public class LinkedList {
     /// Fügt ein neues Element mit dem gegebenen Wert an der gegeben Position in die
     /// Liste ein.
     public void insert(int pos, int data) {
-        Element current = this.anchor.next;
-
-        while (pos > 0) {
-            current = current.next;
-            pos--;
-        }
-        current.insertBefore(data);
+        this.get(pos).insertBefore(data);
         this.size++;
     }
 
     /// Entfernt das letzte Element aus der Liste.
     public void remove_last() {
-        this.anchor.removeBefore();
-            this.size--;
-        }
+        // TODO
+    }
 
     /// Entfernt das Element an der gegebene Position aus der Liste.
     public void remove(int pos) {
-        Element current = this.anchor.next.next;
-
-        while (pos > 0) {
-            current = current.next;
-            pos--;
-        }
-        current.removeBefore();
-        this.size--;
+        // TODO
     }
 
     public int size() {
