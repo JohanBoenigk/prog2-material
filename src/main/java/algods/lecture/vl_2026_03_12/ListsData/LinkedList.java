@@ -53,9 +53,19 @@ public class LinkedList implements List {
         return this.size;
     }
 
-    /// Liefert die Uhrzeit, zu der die Temperatur am höchsten ist.
-    public int getMaxTempTime() {
-        // TODO
-        return 0;
+   public int getMaxTempTime() {
+    Element current = this.anchor.next;
+    Element maxTemp = current;
+    Element maxTime = current;
+
+    while (current != this.anchor) {
+        if (current.data != null && current.data.temp > maxTemp.data.temp) {
+            maxTemp = current;
+            maxTime = current;
+        }
+        current = current.next;
     }
+
+    return maxTime.data.time;
+}
 }
