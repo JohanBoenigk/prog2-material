@@ -53,17 +53,20 @@ public class LinkedList implements List {
         return this.size;
     }
 
-   public int getMaxTempTime() {
-    Element current = this.anchor.next;
-    Element maxTemp = current;
-    Element maxTime = current;
+    /// Liefert die Uhrzeit, zu der die Temperatur am höchsten ist.
+    public int getMaxTempTime() {
 
-    while (current != this.anchor) {
-        if (current.data != null && current.data.temp > maxTemp.data.temp) {
-            maxTemp = current;
-            maxTime = current;
+        Element current = this.anchor.next;
+        Element max_temp_element = current;
+
+        while (current != this.anchor) {
+            current = current.next;
+            if (current.data != null && current.data.temp > max_temp_element.data.temp) {
+                max_temp_element = current;
+            }
         }
-        current = current.next;
+
+        return max_temp_element.data.time;
     }
 
     return maxTime.data.time;
